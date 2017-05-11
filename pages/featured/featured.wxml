@@ -1,0 +1,31 @@
+<!-- 推荐电影 -->
+
+<!-- 弹出加载层 -->
+<loading hidden="{{!loading}}">加载中...</loading>
+
+<!-- 头部标题 -->
+<view class="page-header">
+	<text class="page-header-title">{{title}}</text>
+</view>
+
+<!-- 可滚动视图区域 -->
+<scroll-view scroll-y="true" class="page-body">
+	<!-- 页面详情进入链接 -->
+	<navigator url="../movie/movie?id={{item.id}}" wx:for="{{movies}}" wx:key="{{item.id}}">
+		<view class="item">
+			<image class="poster" src="{{item.images.small}}"></image>
+			
+			<view class="meta">
+				<text class="title">{{item.title}}</text>
+				<text class="sub-title">{{item.original_title}}({{item.year}})</text>
+				<view class="artists">
+					<text wx:for="{{item.directors}}" wx:key="{{item.directors.id}}">{{item.name}}</text>
+				</view>
+			</view>
+			
+			<view class="rating">
+				<text>{{item.rating.average}}</text>
+			</view>
+		</view>
+	</navigator>
+</scroll-view>
